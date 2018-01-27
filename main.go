@@ -13,12 +13,18 @@ func main() {
 	// Game loop
 	var input int
 	for {
+		//exit, _ := strconv.Atoi("q")
+		gocurses.Addch('q')
 		if input == 113 /* Q */ {
 			break
 		}
 		screen.Write("Match 3!", 20, 1)
 		screen.Swap()
-		wind := screen.Window{100, 100, 10, 10, gocurses.Window{}}
+		wind := screen.Window{}
+		wind.Height = 10
+		wind.Width = 10
+		wind.X = 10
+		wind.Y = 10
 		wind.Make()
 		wind.Draw()
 		input = screen.Listen()
