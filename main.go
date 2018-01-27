@@ -5,6 +5,7 @@ import (
 )
 
 //github.com/tncardoso/gocurses
+// http://www.tldp.org/HOWTO/NCURSES-Programming-HOWTO/
 
 func main() {
 	screen.Create()
