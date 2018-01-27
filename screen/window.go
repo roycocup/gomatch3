@@ -7,14 +7,14 @@ type Window struct {
 	Height int
 	X      int
 	Y      int
-	wind   gocurses.Window
+	Wind   gocurses.Window
 }
 
 func (window *Window) Draw() {
-	window.wind.Refresh()
+	window.Wind.Refresh()
 }
 
 func (window *Window) Make() {
-	window.wind = *gocurses.NewWindow(window.Height, window.Width, window.Y, window.X)
-	window.wind.Box(0, 0)
+	window.Wind = *gocurses.NewWindow(window.Height, window.Width, window.Y, window.X)
+	window.Wind.Box(0, 0)
 }

@@ -1,35 +1,30 @@
 package main
 
 import (
+	"strconv"
+
+	"./debug"
 	"./screen"
-	"github.com/tncardoso/gocurses"
 )
 
 //github.com/tncardoso/gocurses
 
 func main() {
 	screen.Create()
-
 	// Game loop
 	var input int
 	for {
-		//exit, _ := strconv.Atoi("q")
-		gocurses.Addch('q')
-		if input == 113 /* Q */ {
+		if input == 113 /* q - for quit */ {
 			break
 		}
-		screen.Write("Match 3!", 20, 1)
 		screen.Swap()
-		wind := screen.Window{}
-		wind.Height = 10
-		wind.Width = 10
-		wind.X = 10
-		wind.Y = 10
-		wind.Make()
-		wind.Draw()
+
+		d := debug.Debug{}
+		debug.AddDebug(&d, "add my debug ")
+		debug.AddDebug(&d, "col - "+strconv.Itoa(screen.MaxCols()))
+		debug.AddDebug(&d, "row - "+strconv.Itoa(screen.MaxRows()))
 		input = screen.Listen()
 	}
 
 	screen.End()
-
 }
