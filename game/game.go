@@ -2,6 +2,8 @@ package game
 
 import (
 	"math/rand"
+
+	"github.com/tncardoso/gocurses"
 )
 
 type Game struct {
@@ -59,5 +61,17 @@ func (game Game) Update() {
 }
 
 func (game Game) Draw() {
+
+	grid := game.grid
+	for col := 0; col < grid.cols; col++ {
+		for row := 0; row < grid.rows; row++ {
+			cell := getRandomCell()
+			cell.row = row
+			cell.col = col
+			wind := gocurses.NewWindow(5, 5, cell.row+5, cell.col+5)
+			wind.Box(0, 0)
+			wind.Refresh()
+		}
+	}
 
 }
