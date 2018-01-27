@@ -1,9 +1,6 @@
 package main
 
 import (
-	"strconv"
-
-	"./debug"
 	"./screen"
 )
 
@@ -19,10 +16,6 @@ func main() {
 		}
 		screen.Swap()
 
-		d := debug.Debug{}
-		debug.AddDebug(&d, "add my debug ")
-		debug.AddDebug(&d, "col - "+strconv.Itoa(screen.MaxCols()))
-		debug.AddDebug(&d, "row - "+strconv.Itoa(screen.MaxRows()))
 		input = screen.Listen()
 	}
 
